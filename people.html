@@ -6,48 +6,30 @@ layout: none
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>People • Active Living Lab (ALL) • UMass Boston</title>
-  <meta name="description" content="Meet the team of the Active Living Lab (ALL) at UMass Boston.">
-  <style>
-    :root{--bg:#fff;--text:#111827;--muted:#6b7280;--brand:#1363DF;--brand-2:#0ea5e9;--border:#e5e7eb;--radius:14px;--shadow:0 8px 24px rgba(0,0,0,.06)}
-    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;color:var(--text);background:var(--bg);line-height:1.6}
-    a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
-    header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    .nav{display:flex;justify-content:space-between;align-items:center;min-height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text)}
-    .brand-logo{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--brand),var(--brand-2));box-shadow:inset 0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.15)}
-    .nav-links{display:flex;gap:14px}.nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
-    .nav-links a.active{background:var(--brand);color:#fff}
-    .menu-toggle{display:none}
-    @media(max-width:960px){.menu-toggle{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#fff}.nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}}
-    h1,h2{font-weight:700;margin-top:1rem}
-    main{padding:60px 0}
-    .grid{display:grid;gap:24px}
-    @media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow)}
-    .card img{width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px}
-    .role{font-weight:600;color:var(--brand)}
-    footer{border-top:1px solid var(--border);background:#f9fafb;color:#374151;padding:28px 0;font-size:.9rem}
-    .footer-grid{display:grid;gap:20px}
-    @media(min-width:720px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
-  </style>
+  <title>PAGE TITLE • Active Living Lab (ALL) • UMass Boston</title>
+  <meta name="description" content="Active Living Lab (ALL) at UMass Boston advances health equity through community-engaged research on physical activity, nutrition, sleep, and healthy living.">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/style.css?v=2">
 </head>
 <body>
-<header>
+
+<header class="header">
   <div class="container nav">
-    <a class="brand" href="index.html"><span class="brand-logo"></span><span>Active Living Lab (ALL)</span></a>
-    <button id="menu-toggle" class="menu-toggle">Menu</button>
-    <nav class="nav-links" id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="people.html" class="active">People</a>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="teaching.html">Teaching</a>
-      <a href="outreach.html">Outreach</a>
-      <a href="news.html">News</a>
-      <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
+    <a class="brand" href="/index.html">
+      <span class="brand-logo" aria-hidden="true"></span>
+      <span>Active Living Lab (ALL)</span>
+    </a>
+    <button id="menu-toggle" aria-label="Toggle menu" style="display:none">Menu</button>
+    <nav class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/people.html">People</a>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/teaching.html">Teaching</a>
+      <a href="/outreach.html">Outreach</a>
+      <a href="/news.html">News</a>
+      <a href="/join.html">Join</a>
+      <a href="/contact.html">Contact</a>
     </nav>
   </div>
 </header>
@@ -102,18 +84,29 @@ layout: none
   </div>
 </main>
 
-<footer>
-  <div class="container footer-grid">
-    <div><strong>Active Living Lab (ALL)</strong><br>Department of Exercise &amp; Health Sciences, UMass Boston<br>Boston, MA, USA<br>© <span id="year"></span> Active Living Lab (ALL)</div>
-    <div><strong>Director:</strong> Dr. Nan Zeng<br><a href="mailto:nan.zeng@umb.edu">nan.zeng@umb.edu</a></div>
-    <div><a href="research.html">Research</a><br><a href="publications.html">Publications</a><br><a href="join.html">Join</a><br><a href="contact.html">Contact</a></div>
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Active Living Lab (ALL), Department of Exercise &amp; Health Sciences, UMass Boston.</div>
+    <div>Director: Dr. Nan Zeng • <a href="mailto:nan.zeng@umb.edu">nan.zeng@umb.edu</a></div>
+    <div>Boston, MA, USA</div>
   </div>
 </footer>
 
 <script>
-  const yearEl=document.getElementById('year');if(yearEl)yearEl.textContent=new Date().getFullYear();
-  const toggle=document.getElementById('menu-toggle'),nav=document.getElementById('site-nav');
-  if(toggle&&nav){toggle.addEventListener('click',()=>{nav.classList.toggle('open');});}
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.querySelector('.nav-links');
+  if (toggle && nav) {
+    toggle.style.display = 'inline-block';
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  }
 </script>
+
 </body>
 </html>
+
