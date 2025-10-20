@@ -19,19 +19,36 @@
     a{color:var(--link);text-decoration:none}
     a:hover{text-decoration:underline;color:var(--link-hover)}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* Header / Nav */
     header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;justify-content:space-between;align-items:center;min-height:64px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text)}
-    .brand-logo{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--brand),var(--brand-2));box-shadow:inset 0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.15)}
+    /* Replaced gradient dot with your actual logo image */
+    .brand-logo{
+      width:40px;          /* tweak to 36px or 32px if you prefer smaller */
+      height:auto;
+      display:block;
+      object-fit:contain;
+      border-radius:0;
+      box-shadow:none;
+      background:none;
+    }
     .nav-links{display:flex;gap:14px}
     .nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
     .nav-links a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(19,99,223,.25)}
     .menu-toggle{display:none;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-weight:600}
+
     @media(max-width:960px){
       .menu-toggle{display:inline-block}
-      .nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}
+      .nav-links{
+        position:absolute;top:64px;left:0;right:0;background:#fff;
+        flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)
+      }
       .nav-links.open{display:flex}
     }
+
+    /* Hero and sections */
     .hero{background:linear-gradient(180deg,#eef7ff 0%,#fff 70%);padding:72px 0 48px;border-bottom:1px solid var(--border)}
     .badge{display:inline-block;background:#dbeafe;border:1px solid #bfdbfe;color:#0b3b79;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.85rem}
     h1{font-size:clamp(2rem,2.6vw+1.2rem,3rem);margin:16px 0 12px}
@@ -47,6 +64,8 @@
     .kicker{text-transform:uppercase;font-size:.78rem;color:#1f2937;letter-spacing:.08em;margin-bottom:4px}
     .card h3{margin:.2rem 0 .4rem}
     .card p{color:var(--muted)}
+
+    /* Footer */
     footer{border-top:1px solid var(--border);background:#f9fafb;color:#374151;padding:28px 0}
     .footer-grid{display:grid;gap:20px}
     @media(min-width:720px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
@@ -56,10 +75,12 @@
 <body>
 <header class="header">
   <div class="container nav">
-    <a class="brand" href="index.html">
-      <span class="brand-logo"></span><span>Active Living Lab (ALL)</span>
+    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
+      <!-- Use the logo you uploaded at the repo root -->
+      <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
+      <span>Active Living Lab (ALL)</span>
     </a>
-    <button id="menu-toggle" class="menu-toggle">Menu</button>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">Menu</button>
     <nav class="nav-links" id="site-nav">
       <a href="index.html" class="active">Home</a>
       <a href="people.html">People</a>
@@ -153,9 +174,18 @@
 </footer>
 
 <script>
-  const yearEl=document.getElementById('year');if(yearEl)yearEl.textContent=new Date().getFullYear();
-  const toggle=document.getElementById('menu-toggle'),nav=document.getElementById('site-nav');
-  if(toggle&&nav){toggle.addEventListener('click',()=>{nav.classList.toggle('open');});}
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (visibility controlled by CSS)
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  }
 </script>
 </body>
 </html>
