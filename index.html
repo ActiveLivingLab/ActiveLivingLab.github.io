@@ -24,9 +24,8 @@
     header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;justify-content:space-between;align-items:center;min-height:64px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text)}
-    /* Replaced gradient dot with your actual logo image */
     .brand-logo{
-      width:40px;          /* tweak to 36px or 32px if you prefer smaller */
+      width:40px;
       height:auto;
       display:block;
       object-fit:contain;
@@ -76,7 +75,6 @@
 <header class="header">
   <div class="container nav">
     <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
-      <!-- Use the logo you uploaded at the repo root -->
       <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
       <span>Active Living Lab (ALL)</span>
     </a>
@@ -90,7 +88,7 @@
       <a href="outreach.html">Outreach</a>
       <a href="news.html">News</a>
       <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
+      <!-- Removed the Contact link from the top navigation -->
     </nav>
   </div>
 </header>
@@ -174,11 +172,9 @@
 </footer>
 
 <script>
-  // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Mobile nav toggle (visibility controlled by CSS)
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('site-nav');
   if (toggle && nav) {
