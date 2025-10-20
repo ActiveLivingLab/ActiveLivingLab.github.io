@@ -18,8 +18,12 @@
     .nav-links{display:flex;gap:14px}
     .nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
     .nav-links a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(19,99,223,.25)}
-    .menu-toggle{display:none;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-weight:600}
-    @media(max-width:960px){.menu-toggle{display:inline-block}.nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}}
+    .menu-toggle{display:none;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-weight:600;cursor:pointer}
+    @media(max-width:960px){
+      .menu-toggle{display:inline-block}
+      .nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}
+      .nav-links.open{display:flex}
+    }
     main{padding:60px 0}
     h1{font-size:clamp(1.8rem,2.2vw+1rem,2.6rem);margin-bottom:10px}
     .lead{color:var(--muted);max-width:70ch;margin-bottom:18px}
@@ -42,7 +46,7 @@
     @media(min-width:720px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
   </style>
   <style>
-    /* News-specific light styles (work alongside your main CSS) */
+    /* News-specific light styles */
     .controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px}
     .chip{display:inline-flex;align-items:center;gap:8px;font-weight:600;border:1px solid var(--border,#e5e7eb);padding:8px 12px;border-radius:999px;background:#fff}
     .chip input{accent-color:var(--brand,#1363DF)}
@@ -55,7 +59,6 @@
     .thumb{width:100%;max-height:220px;object-fit:cover;border-radius:10px;margin:8px 0}
     .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
     .tag{font-size:.8rem;padding:4px 8px;border:1px solid var(--border,#e5e7eb);border-radius:999px;background:#f9fafb}
-    /* Optional: make the hero-ish page title breathe a bit */
     main.container{padding-top:32px;padding-bottom:40px}
   </style>
 </head>
@@ -66,6 +69,7 @@
       <span class="brand-logo" aria-hidden="true"></span>
       <span>Active Living Lab (ALL)</span>
     </a>
+    <!-- Button is controlled by CSS; no JS forcing display on desktop -->
     <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
     <nav class="nav-links" id="site-nav">
       <a href="index.html">Home</a>
@@ -86,7 +90,6 @@
   <h1 style="margin:0 0 6px">News</h1>
   <p class="lead">Lab updates, publications, talks, grants, and community partnerships.</p>
 
-  <!-- Optional quick filters (toggle chips to filter by tag) -->
   <div class="controls" aria-label="Filters">
     <label class="chip"><input type="checkbox" checked data-tag="publication"> Publications</label>
     <label class="chip"><input type="checkbox" checked data-tag="grant"> Grants</label>
@@ -95,7 +98,6 @@
     <label class="chip"><input type="checkbox" checked data-tag="talk"> Talks</label>
   </div>
 
-  <!-- Quick starter items you had originally -->
   <h2 class="year">Quick notes</h2>
   <div class="feed">
     <article class="item" data-tags="community">
@@ -116,6 +118,7 @@
       <p>Support to build partnerships with schools and community organizations across Massachusetts.</p>
     </article>
   </div>
+</div>
 </main>
 
 <footer class="footer">
@@ -130,11 +133,10 @@
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Mobile menu toggle (works with your CSS)
+  // Mobile menu toggle (CSS controls visibility; no forced display)
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('site-nav');
   if (toggle && nav) {
-    toggle.style.display = 'inline-block';
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
