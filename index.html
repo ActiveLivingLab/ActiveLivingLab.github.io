@@ -12,6 +12,7 @@
       --radius:14px;--shadow:0 8px 24px rgba(0,0,0,.06);
     }
     *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;}
     body{
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);background:var(--bg);line-height:1.6;
@@ -24,15 +25,7 @@
     header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;justify-content:space-between;align-items:center;min-height:64px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text)}
-    .brand-logo{
-      width:40px;
-      height:auto;
-      display:block;
-      object-fit:contain;
-      border-radius:0;
-      box-shadow:none;
-      background:none;
-    }
+    .brand-logo{width:40px;height:auto;display:block;object-fit:contain;border-radius:0;box-shadow:none;background:none}
     .nav-links{display:flex;gap:14px}
     .nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
     .nav-links a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(19,99,223,.25)}
@@ -45,31 +38,15 @@
         flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)
       }
       .nav-links.open{display:flex}
+      .nav-links a{padding:12px 14px}
     }
 
     /* Hero and sections */
     .hero{background:linear-gradient(180deg,#eef7ff 0%,#fff 70%);padding:72px 0 48px;border-bottom:1px solid var(--border)}
 
     /* enlarged badge text */
-    .badge {
-      display: inline-block;
-      background: #dbeafe;
-      border: 1px solid #bfdbfe;
-      color: #0b3b79;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 1.25rem; /* larger font */
-      letter-spacing: 0.02em;
-    }
-
-    /* responsive scaling for small screens */
-    @media (max-width: 640px) {
-      .badge {
-        font-size: 1rem;
-        padding: 8px 14px;
-      }
-    }
+    .badge{display:inline-block;background:#dbeafe;border:1px solid #bfdbfe;color:#0b3b79;padding:10px 18px;border-radius:999px;font-weight:700;font-size:1.25rem;letter-spacing:.02em}
+    @media (max-width:640px){.badge{font-size:1rem;padding:8px 14px}}
 
     h1{font-size:clamp(2rem,2.6vw+1.2rem,3rem);margin:16px 0 12px}
     .lead{color:var(--muted);font-size:clamp(1.05rem,1vw+.9rem,1.25rem);max-width:68ch}
@@ -84,6 +61,18 @@
     .kicker{text-transform:uppercase;font-size:.78rem;color:#1f2937;letter-spacing:.08em;margin-bottom:4px}
     .card h3{margin:.2rem 0 .4rem}
     .card p{color:var(--muted)}
+    .muted{color:var(--muted)}
+
+    /* Contact section */
+    .contact{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .contact-wrap{display:grid;gap:24px}
+    @media(min-width:900px){.contact-wrap{grid-template-columns:1.2fr .8fr}}
+    .contact .card{height:100%}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .input, .textarea{
+      padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fff;font:inherit
+    }
+    .textarea{min-height:120px;resize:vertical}
 
     /* Footer */
     footer{border-top:1px solid var(--border);background:#f9fafb;color:#374151;padding:28px 0}
@@ -109,6 +98,8 @@
       <a href="outreach.html">Outreach</a>
       <a href="news.html">News</a>
       <a href="join.html">Join</a>
+      <!-- NEW: Contact in top nav (anchors to section below) -->
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -119,7 +110,7 @@
       <span class="badge">Health Equity • Community • Behavior Change</span>
       <h1>Active Living Lab (ALL)</h1>
       <p class="lead">We design, test, and scale evidence-based strategies to promote physical activity and health — especially within underserved communities. Our work integrates rigorous science with real-world partnerships across schools, Head Start centers, and community programs.</p>
-      <p><a class="button" href="join.html">Join the lab</a></p>
+      <p><a class="button" href="join.html">Join the lab</a> <a class="button button-secondary" href="#contact">Contact us</a></p>
     </div>
   </section>
 
@@ -168,6 +159,44 @@
       </div>
     </div>
   </section>
+
+  <!-- NEW: Contact section -->
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="container contact-wrap">
+      <div class="card">
+        <div class="kicker">Contact</div>
+        <h2 id="contact-title">Get in touch</h2>
+        <p class="muted">We welcome inquiries from schools, Head Start centers, community organizations, students, and collaborators.</p>
+        <div style="margin-top:12px">
+          <p><strong>Email:</strong> <a href="mailto:nan.zeng@umb.edu">nan.zeng@umb.edu</a></p>
+          <p><strong>Address:</strong> Department of Exercise &amp; Health Sciences, UMass Boston, Boston, MA, USA</p>
+          <p><strong>For partnerships:</strong> <a href="outreach.html">Outreach &amp; Partnerships</a></p>
+        </div>
+      </div>
+
+      <div class="card" aria-label="Send a message">
+        <h3 style="margin-bottom:.5rem">Quick message</h3>
+        <!-- Mailto form (opens email client with prefilled subject/body) -->
+        <form action="mailto:nan.zeng@umb.edu" method="get">
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input id="c-name" name="name" class="input" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="c-email">Your email</label>
+            <input id="c-email" name="email" class="input" type="email" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="c-msg">Message</label>
+            <textarea id="c-msg" name="body" class="textarea" placeholder="How can we help?"></textarea>
+          </div>
+          <input type="hidden" name="subject" value="ALL Website Inquiry">
+          <button class="button" type="submit">Open email to send</button>
+        </form>
+        <p class="muted" style="margin-top:8px">Note: This opens your email app to send the message.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -186,22 +215,26 @@
       <a href="people.html">People</a><br>
       <a href="research.html">Research</a><br>
       <a href="join.html">Join</a><br>
-      <a href="contact.html">Contact</a>
+      <!-- Footer link now anchors to the on-page section -->
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
+  // Set year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Mobile menu toggle
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('site-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  }
+  if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // Close mobile nav after clicking a link (for better UX)
+  nav?.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> nav.classList.remove('open'));
+  });
 </script>
 </body>
 </html>
