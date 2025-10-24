@@ -44,6 +44,34 @@
     /* Hero and sections */
     .hero{background:linear-gradient(180deg,#eef7ff 0%,#fff 70%);padding:72px 0 48px;border-bottom:1px solid var(--border)}
 
+    /* Add flex container for hero */
+    .hero-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 600px;
+    }
+    .hero-logo img {
+      max-width: 220px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 768px) {
+      .hero-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-logo img {
+        margin-top: 24px;
+        max-width: 180px;
+      }
+    }
+
     /* enlarged badge text */
     .badge{display:inline-block;background:#dbeafe;border:1px solid #bfdbfe;color:#0b3b79;padding:10px 18px;border-radius:999px;font-weight:700;font-size:1.25rem;letter-spacing:.02em}
     @media (max-width:640px){.badge{font-size:1rem;padding:8px 14px}}
@@ -98,19 +126,25 @@
       <a href="outreach.html">Outreach</a>
       <a href="news.html">News</a>
       <a href="join.html">Join</a>
-      <!-- NEW: Contact in top nav (anchors to section below) -->
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- ✅ Updated HERO section with logo -->
   <section class="hero">
-    <div class="container">
-      <span class="badge">Health Equity • Community • Behavior Change</span>
-      <h1>Active Living Lab (ALL)</h1>
-      <p class="lead">We design, test, and scale evidence-based strategies to promote physical activity and health — especially within underserved communities. Our work integrates rigorous science with real-world partnerships across schools, Head Start centers, and community programs.</p>
-      <p><a class="button" href="join.html">Join the lab</a> <a class="button button-secondary" href="#contact">Contact us</a></p>
+    <div class="container hero-flex">
+      <div class="hero-text">
+        <span class="badge">Health Equity • Community • Behavior Change</span>
+        <h1>Active Living Lab (ALL)</h1>
+        <p class="lead">We design, test, and scale evidence-based strategies to promote physical activity and health — especially within underserved communities. Our work integrates rigorous science with real-world partnerships across schools, Head Start centers, and community programs.</p>
+        <p><a class="button" href="join.html">Join the lab</a> <a class="button button-secondary" href="#contact">Contact us</a></p>
+      </div>
+
+      <div class="hero-logo">
+        <img src="lab-logo.png" alt="Active Living Lab logo">
+      </div>
     </div>
   </section>
 
@@ -160,7 +194,6 @@
     </div>
   </section>
 
-  <!-- Contact section -->
   <section id="contact" class="contact" aria-labelledby="contact-title">
     <div class="container contact-wrap">
       <div class="card">
@@ -176,26 +209,20 @@
 
       <div class="card" aria-label="Send a message">
         <h3 style="margin-bottom:.5rem">Quick message</h3>
-
-        <!-- We replaced the <form> with plain inputs + a JS-controlled button -->
         <div>
           <div class="field">
             <label for="c-name">Your name</label>
             <input id="c-name" class="input" type="text" placeholder="Your name">
           </div>
-
           <div class="field">
             <label for="c-email">Your email</label>
             <input id="c-email" class="input" type="email" placeholder="you@example.com">
           </div>
-
           <div class="field">
             <label for="c-msg">Message</label>
             <textarea id="c-msg" class="textarea" placeholder="How can we help?"></textarea>
           </div>
-
           <button id="email-btn" class="button" type="button">Open email to send</button>
-
           <p class="muted" style="margin-top:8px">
             Note: This opens your email app with a draft message to us.
           </p>
@@ -241,7 +268,7 @@
     });
   }
 
-  // Close mobile nav after clicking a link (for better UX)
+  // Close mobile nav after clicking a link
   if (nav) {
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
@@ -259,20 +286,14 @@
       const email = document.getElementById('c-email')?.value.trim() || '';
       const msg = document.getElementById('c-msg')?.value.trim() || '';
 
-      // Build email subject + body
       const subject = encodeURIComponent('ALL Website Inquiry');
       const bodyLines = [
         name ? `Name: ${name}` : '',
         email ? `Email: ${email}` : '',
         msg ? `Message:\n${msg}` : ''
-      ].filter(Boolean); // remove empty lines
-
+      ].filter(Boolean);
       const body = encodeURIComponent(bodyLines.join('\n\n'));
-
-      // Build the final mailto link
       const mailto = `mailto:nan.zeng@umb.edu?subject=${subject}&body=${body}`;
-
-      // Open the user's mail client
       window.location.href = mailto;
     });
   }
