@@ -50,7 +50,7 @@
 
     h1{font-size:clamp(2rem,2.6vw+1.2rem,3rem);margin:16px 0 12px}
     .lead{color:var(--muted);font-size:clamp(1.05rem,1vw+.9rem,1.25rem);max-width:68ch}
-    .button{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid transparent;background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(19,99,223,.25)}
+    .button{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid transparent;background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(19,99,223,.25);text-decoration:none;line-height:1.2}
     .button:hover{filter:brightness(.95);text-decoration:none}
     .button-secondary{background:#fff;color:var(--brand);border:1px solid var(--brand);margin-left:.5rem}
     section{padding:48px 0}
@@ -160,7 +160,7 @@
     </div>
   </section>
 
-  <!-- NEW: Contact section -->
+  <!-- Contact section -->
   <section id="contact" class="contact" aria-labelledby="contact-title">
     <div class="container contact-wrap">
       <div class="card">
@@ -176,24 +176,30 @@
 
       <div class="card" aria-label="Send a message">
         <h3 style="margin-bottom:.5rem">Quick message</h3>
-        <!-- Mailto form (opens email client with prefilled subject/body) -->
-        <form action="mailto:nan.zeng@umb.edu" method="get">
+
+        <!-- We replaced the <form> with plain inputs + a JS-controlled button -->
+        <div>
           <div class="field">
             <label for="c-name">Your name</label>
-            <input id="c-name" name="name" class="input" type="text" placeholder="Your name">
+            <input id="c-name" class="input" type="text" placeholder="Your name">
           </div>
+
           <div class="field">
             <label for="c-email">Your email</label>
-            <input id="c-email" name="email" class="input" type="email" placeholder="you@example.com">
+            <input id="c-email" class="input" type="email" placeholder="you@example.com">
           </div>
+
           <div class="field">
             <label for="c-msg">Message</label>
-            <textarea id="c-msg" name="body" class="textarea" placeholder="How can we help?"></textarea>
+            <textarea id="c-msg" class="textarea" placeholder="How can we help?"></textarea>
           </div>
-          <input type="hidden" name="subject" value="ALL Website Inquiry">
-          <button class="button" type="submit">Open email to send</button>
-        </form>
-        <p class="muted" style="margin-top:8px">Note: This opens your email app to send the message.</p>
+
+          <button id="email-btn" class="button" type="button">Open email to send</button>
+
+          <p class="muted" style="margin-top:8px">
+            Note: This opens your email app with a draft message to us.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -215,7 +221,6 @@
       <a href="people.html">People</a><br>
       <a href="research.html">Research</a><br>
       <a href="join.html">Join</a><br>
-      <!-- Footer link now anchors to the on-page section -->
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -229,12 +234,48 @@
   // Mobile menu toggle
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('site-nav');
-  if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+    });
+  }
 
   // Close mobile nav after clicking a link (for better UX)
-  nav?.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', ()=> nav.classList.remove('open'));
-  });
+  if (nav) {
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Email button logic
+  const emailBtn = document.getElementById('email-btn');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', () => {
+      const name = document.getElementById('c-name')?.value.trim() || '';
+      const email = document.getElementById('c-email')?.value.trim() || '';
+      const msg = document.getElementById('c-msg')?.value.trim() || '';
+
+      // Build email subject + body
+      const subject = encodeURIComponent('ALL Website Inquiry');
+      const bodyLines = [
+        name ? `Name: ${name}` : '',
+        email ? `Email: ${email}` : '',
+        msg ? `Message:\n${msg}` : ''
+      ].filter(Boolean); // remove empty lines
+
+      const body = encodeURIComponent(bodyLines.join('\n\n'));
+
+      // Build the final mailto link
+      const mailto = `mailto:nan.zeng@umb.edu?subject=${subject}&body=${body}`;
+
+      // Open the user's mail client
+      window.location.href = mailto;
+    });
+  }
 </script>
 </body>
 </html>
