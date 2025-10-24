@@ -50,17 +50,28 @@
   </style>
 </head>
 <body>
-<header class="header">
+  <header class="header">
   <div class="container nav">
     <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
       <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
       <span>Active Living Lab (ALL)</span>
     </a>
-    <button id="menu-toggle" aria-label="Toggle menu" style="display:none">Menu</button>
-    <nav class="nav-links"><a href="index.html" class="">Home</a><a href="people.html" class="">People</a><a href="research.html" class="">Research</a><a href="publications.html" class="">Publications</a><a href="teaching.html" class="">Teaching</a><a href="outreach.html" class="active">Outreach</a><a href="news.html" class="">News</a><a href="join.html" class="">Join</a><a href="contact.html" class="">Contact</a></nav>
+    <!-- Button is controlled by CSS; no JS forcing display on desktop -->
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+    <nav class="nav-links" id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="people.html">People</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="news.html" class="active">News</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
-
+  
 <main>
   <div class="container">
     <h1>Research</h1>
