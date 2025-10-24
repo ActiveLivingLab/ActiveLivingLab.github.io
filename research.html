@@ -9,7 +9,8 @@
     :root{--bg:#fff;--text:#111827;--muted:#6b7280;--brand:#1363DF;--brand-2:#0ea5e9;--link:#0f766e;--link-hover:#115e59;--surface:#f8fafc;--border:#e5e7eb;--radius:14px;--shadow:0 8px 24px rgba(0,0,0,.06)}
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-    a{color:var(--link);text-decoration:none}a:hover{color:var(--link-hover);text-decoration:underline}
+    a{color:var(--link);text-decoration:none}
+    a:hover{color:var(--link-hover);text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
     header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;justify-content:space-between;align-items:center;min-height:64px}
@@ -19,7 +20,11 @@
     .nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
     .nav-links a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(19,99,223,.25)}
     .menu-toggle{display:none;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-weight:600}
-    @media(max-width:960px){.menu-toggle{display:inline-block}.nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}}
+    @media(max-width:960px){
+      .menu-toggle{display:inline-block}
+      .nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;display:none;padding:10px;border-bottom:1px solid var(--border)}
+      .nav-links.open{display:flex}
+    }
     main{padding:60px 0}
     h1{font-size:clamp(1.8rem,2.2vw+1rem,2.6rem);margin-bottom:10px}
     .lead{color:var(--muted);max-width:70ch;margin-bottom:18px}
@@ -35,7 +40,9 @@
     .tags{display:flex;flex-wrap:wrap;gap:6px}
     .tag{font-size:.8rem;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#f9fafb}
     .links{display:flex;flex-wrap:wrap;gap:10px}
-    .btn{display:inline-block;padding:8px 12px;border-radius:10px;font-weight:700;border:1px solid var(--border);background:#fff}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;
+         font-weight:700;border:1px solid var(--border);background:#fff;
+         text-decoration:none;line-height:1.2}
     .btn.primary{border-color:var(--brand);color:#fff;background:var(--brand)}
     footer{border-top:1px solid var(--border);background:#f9fafb;color:#374151;padding:28px 0;font-size:.95rem;margin-top:40px}
     .footer-grid{display:grid;gap:20px}
@@ -79,7 +86,7 @@
     </div>
 
     <div class="grid" id="projects">
-      <!-- Project 1 -->
+      <!-- ALL-PLAY -->
       <article class="card" data-area="pa sb">
         <div class="kicker">Ongoing</div>
         <h3>ALL-PLAY: Parent–Child Exergaming and Physical Activity</h3>
@@ -91,7 +98,10 @@
           <span class="tag">Physical Activity</span>
         </div>
         <div class="links">
-          <a class="btn primary" href="enroll.html" target="_blank">Enroll</a>
+          <a
+            class="btn primary"
+            href="mailto:nan.zeng@umb.edu?subject=Study%20Participation%20-%20ALL-PLAY"
+          >Enroll</a>
         </div>
       </article>
 
@@ -107,7 +117,10 @@
           <span class="tag">Surveillance</span>
         </div>
         <div class="links">
-          <a class="btn primary" href="enroll.html" target="_blank">Enroll</a>
+          <a
+            class="btn primary"
+            href="mailto:nan.zeng@umb.edu?subject=Study%20Participation%20-%20SUNRISE"
+          >Enroll</a>
         </div>
       </article>
 
@@ -170,21 +183,27 @@
   </div>
 
 <script>
-  const yearEl=document.getElementById('year'); if(yearEl) yearEl.textContent=new Date().getFullYear();
-  const toggle=document.getElementById('menu-toggle'), nav=document.getElementById('site-nav');
-  if(toggle&&nav){ toggle.addEventListener('click',()=>nav.classList.toggle('open')); }
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  const toggle = document.getElementById('menu-toggle'),
+        nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  }
 
   // Filters
-  const checks=[...document.querySelectorAll('.tools input[data-area]')];
-  const cards=[...document.querySelectorAll('.card[data-area]')];
-  function apply(){
-    const allow=new Set(checks.filter(c=>c.checked).map(c=>c.dataset.area));
-    cards.forEach(c=>{
-      const areas=c.dataset.area.split(' ');
-      c.style.display = areas.some(a=>allow.has(a)) ? 'grid' : 'none';
+  const checks = [...document.querySelectorAll('.tools input[data-area]')];
+  const cards = [...document.querySelectorAll('.card[data-area]')];
+  function apply() {
+    const allow = new Set(checks.filter(c => c.checked).map(c => c.dataset.area));
+    cards.forEach(c => {
+      const areas = c.dataset.area.split(' ');
+      c.style.display = areas.some(a => allow.has(a)) ? 'grid' : 'none';
     });
   }
-  checks.forEach(c=>c.addEventListener('change',apply)); apply();
+  checks.forEach(c => c.addEventListener('change', apply));
+  apply();
 </script>
 </body>
 </html>
