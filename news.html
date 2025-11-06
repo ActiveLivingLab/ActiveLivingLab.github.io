@@ -65,7 +65,7 @@
 <body>
 <header class="header">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
+    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) About">
       <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
       <span>Active Living Lab (ALL)</span>
     </a>
@@ -121,42 +121,15 @@
 </div>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div>© <span id="year"></span> Active Living Lab (ALL), Department of Exercise &amp; Health Sciences, UMass Boston.</div>
-    <div>Director: Dr. Nan Zeng • <a href="mailto:nan.zeng@umb.edu">nan.zeng@umb.edu</a></div>
-    <div>Boston, MA, USA</div>
-  </div>
-</footer>
+ <footer class="footer">
+    <div class="container footer-lab">
+      <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
+      © <span id="year"></span> Active Living Lab (ALL)
+    </div>
+  </footer>
 
-<script>
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Mobile menu toggle (CSS controls visibility; no forced display)
-  const toggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('site-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-
-  // Tag filters
-  const checks = [...document.querySelectorAll('.controls input[data-tag]')];
-  const posts  = [...document.querySelectorAll('.item')];
-
-  function applyFilters(){
-    const allowed = new Set(checks.filter(c => c.checked).map(c => c.dataset.tag));
-    posts.forEach(p => {
-      const tags = (p.dataset.tags || '').split(' ');
-      p.style.display = tags.some(t => allowed.has(t)) ? 'block' : 'none';
-    });
-  }
-  checks.forEach(c => c.addEventListener('change', applyFilters));
-  applyFilters();
-</script>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
