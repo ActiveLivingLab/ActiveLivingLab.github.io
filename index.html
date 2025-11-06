@@ -90,21 +90,10 @@
     .card p{color:var(--muted)}
     .muted{color:var(--muted)}
 
-    /* Contact section */
-    .contact{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .contact-wrap{display:grid;gap:24px}
-    @media(min-width:900px){.contact-wrap{grid-template-columns:1.2fr .8fr}}
-    .contact .card{height:100%}
-    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
-    .input,.textarea{
-      padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fff;font:inherit
-    }
-    .textarea{min-height:120px;resize:vertical}
-
     /* Footer */
     footer{border-top:1px solid var(--border);background:#f9fafb;color:#374151;padding:28px 0}
     .footer-grid{display:grid;gap:20px}
-    @media(min-width:720px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
+    @media(min-width:720px){.footer-grid{grid-template-columns:2fr 2fr}}
     .footer a{color:#0b3b79}
   </style>
 </head>
@@ -126,7 +115,6 @@
       <a href="outreach.html">Outreach</a>
       <a href="news.html">News</a>
       <a href="join.html">Join</a>
-      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -139,10 +127,11 @@
         <span class="badge">Health Equity • Community • Behavior Change</span>
         <h1>Active Living Lab (ALL)</h1>
         <p class="lead">
-          ALL is an independent research lab directd by Dr. Nan Zeng and housed in the Department of Exercise &amp; Health Sciences at the University of Massachusetts Boston.
+          The Active Living Lab (ALL) is an independent research lab directed by Dr. Nan Zeng and housed in the Department of Exercise &amp; Health Sciences at the University of Massachusetts Boston.
         </p>
         <p style="margin-top:0.75rem;font-size:0.98rem;color:#4b5563;">
-          We study movement behaviors, and design, test, and scale evidence-based strategies to promote physical activity and health — especially among underserved populations. 
+          We study movement behaviors and design, test, and scale evidence-based strategies to promote physical activity and health — especially among underserved populations.
+        </p>
         <p style="margin-top:0.75rem;font-size:0.98rem;color:#4b5563;">
           Our work integrates rigorous science with real-world partnerships across schools, families, and communities.
         </p>
@@ -152,13 +141,15 @@
       </div>
     </div>
   </section>
-  
+</main>
+
 <footer>
   <div class="container footer-grid">
     <div>
       <strong>Active Living Lab (ALL)</strong><br>
       © <span id="year"></span> Active Living Lab (ALL)
     </div>
+    <div>
       <small>
         This is a personal research lab website maintained by the Active Living Lab (ALL) and does not represent the official views of the University of Massachusetts Boston.
       </small>
@@ -188,25 +179,6 @@
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
       });
-    });
-  }
-
-  // Email button logic
-  const emailBtn = document.getElementById('email-btn');
-  if (emailBtn) {
-    emailBtn.addEventListener('click', () => {
-      const name = document.getElementById('c-name')?.value.trim() || '';
-      const email = document.getElementById('c-email')?.value.trim() || '';
-      const msg = document.getElementById('c-msg')?.value.trim() || '';
-      const subject = encodeURIComponent('ALL Website Inquiry');
-      const bodyLines = [
-        name ? `Name: ${name}` : '',
-        email ? `Email: ${email}` : '',
-        msg ? `Message:\n${msg}` : ''
-      ].filter(Boolean);
-      const body = encodeURIComponent(bodyLines.join('\n\n'));
-      const mailto = `mailto:nan.zeng@umb.edu?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
     });
   }
 </script>
