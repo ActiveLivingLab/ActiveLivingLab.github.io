@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Research • Active Living Lab (ALL)</title>
-  <meta name="description" content="Research projects of the Active Living Lab (ALL) at UMass Boston.">
+  <title>People • Active Living Lab (ALL)</title>
+  <meta name="description" content="People at the Active Living Lab (ALL) at UMass Boston.">
   <style>
     :root{
       --bg:#fff;--text:#111827;--muted:#6b7280;
@@ -35,9 +35,9 @@
       background:radial-gradient(circle at 30% 30%,var(--brand),var(--brand-2));
       box-shadow:inset 0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.15)
     }
-    .brand-colored span:nth-child(1){color:#e53935;}   /* red - Active */
-    .brand-colored span:nth-child(2){color:#2e7d32;}   /* green - Living */
-    .brand-colored span:nth-child(3){color:#2196f3;}   /* blue - Lab */
+    .brand-colored span:nth-child(1){color:#e53935;}
+    .brand-colored span:nth-child(2){color:#2e7d32;}
+    .brand-colored span:nth-child(3){color:#2196f3;}
 
     .nav-links{display:flex;gap:14px}
     .nav-links a{
@@ -62,17 +62,65 @@
       .nav-links.open{display:flex}
     }
 
-    /* Main section */
+    /* Main */
     main{padding:60px 0}
     h1{
       font-size:clamp(1.8rem,2.2vw+1rem,2.6rem);
-      margin-bottom:20px;
+      margin-bottom:16px;
     }
-    .section p{
-      margin-bottom:1.4rem;
-      max-width:80ch;
-      color:var(--text);
+    .intro{
+      margin-bottom:32px;
+      max-width:70ch;
+      color:var(--muted);
+      font-size:1.02rem;
+    }
+
+    .section-title{
+      font-size:1.2rem;
+      font-weight:600;
+      margin:32px 0 16px;
+    }
+
+    .grid{
+      display:grid;
+      gap:20px;
+    }
+    @media(min-width:720px){
+      .grid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      display:grid;
+      gap:8px;
+    }
+    .kicker{
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.78rem;
+      color:#1f2937;
+    }
+    .card h3{
+      margin:0;
       font-size:1.05rem;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .card p{
+      font-size:.95rem;
+      color:var(--text);
+    }
+    .card a.button-link{
+      display:inline-block;
+      margin-top:4px;
+      font-size:.9rem;
+      font-weight:500;
     }
 
     /* Footer */
@@ -80,10 +128,11 @@
       border-top:1px solid var(--border);
       background:#fff;
       color:#4b5563;
-      padding:28px 0;font-size:.95rem;
-      margin-top:40px;text-align:left;
+      padding:28px 0;
+      font-size:.95rem;
+      margin-top:40px;
+      text-align:left;
     }
-    .footer-lab strong{font-weight:600;color:#111827;}
   </style>
 </head>
 <body>
@@ -99,8 +148,8 @@
     <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
     <nav class="nav-links" id="site-nav">
       <a href="about.html">About</a>
-      <a href="people.html">People</a>
-      <a href="research.html" class="active">Research</a>
+      <a href="people.html" class="active">People</a>
+      <a href="research.html">Research</a>
       <a href="https://scholar.google.com/citations?user=039CZPMAAAAJ&hl=en" target="_blank" rel="noopener">Publications</a>
       <a href="teaching.html">Teaching</a>
       <a href="outreach.html">Outreach</a>
@@ -109,26 +158,70 @@
     </nav>
   </div>
 </header>
-  
+
 <main>
   <div class="container">
-    <h1>Research</h1>
+    <h1>People</h1>
+    <p class="intro">
+      We are a multidisciplinary team of researchers, students, and community partners
+      dedicated to advancing health equity through physical activity and health promotion,
+      especially among underserved families with young children.
+    </p>
 
-    <div class="section">
-      <p>How can we create conditions that enable everyone—regardless of background or circumstance—to live active, healthy, and meaningful lives? Across communities, profound inequities in access to safe spaces, resources, and opportunities for movement continue to shape health outcomes. Yet, like scientific tools that once transformed human understanding, physical activity and health promotion can be seen as powerful social and behavioral tools—mechanisms that empower individuals and communities to flourish.</p>
+    <h2 class="section-title">Principal Investigator</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="kicker">Principal Investigator</div>
+        <h3>Nan Zeng, PhD</h3>
+        <div class="meta">Assistant Professor of Exercise Science, University of Massachusetts Boston</div>
+        <p>
+          Dr. Zeng leads the Active Living Lab (ALL), focusing on how physical activity,
+          nutrition, and other health behaviors can be promoted through community-engaged
+          research in early childhood, school, and family settings.
+        </p>
+        <a class="button-link"
+           href="https://docs.google.com/document/d/1ZFZL7Q4LpgOK5Qlga3DDVKKHQA_h-TSm8yAgRZOtVfc/edit?tab=t.0"
+           target="_blank" rel="noopener">
+          View CV
+        </a>
+      </article>
+    </div>
 
-      <p>At the Active Living Lab (ALL), we advance health equity through evidence-based strategies that promote physical activity and health. Our research examines how environments, programs, and policies can be designed to make healthy choices accessible, sustainable, and culturally relevant for all.</p>
+    <h2 class="section-title">Students & Trainees</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="kicker">PhD Student</div>
+        <h3>Yabing Zhou</h3>
+        <div class="meta">PhD Student in Exercise & Health Sciences, University of Massachusetts Boston</div>
+        <p>
+          Yabing’s research focuses on early childhood movement behaviors, data analysis
+          using wearable devices, and community-based interventions promoting active living
+          among young children and families.
+        </p>
+      </article>
 
-      <p>Grounded in behavior change theory and guided by community engagement, we collaborate with schools, families, and local organizations to co-create solutions that bridge research and practice. Through this work, we aim not only to understand the determinants of active living but also to transform them—helping communities move toward healthier, more equitable futures. To learn more about our research, visit our 
-        <a href="https://docs.google.com/document/d/1FzfPI3_N2AMR43sOtnog_BacyqAo6hB_YQtgupVS9Fc/edit?tab=t.0" target="_blank" rel="noopener">
-          Projects
-        </a> 
-        and 
-        <a href="https://scholar.google.com/citations?user=039CZPMAAAAJ&hl=en" target="_blank" rel="noopener">
-          Publications (Google Scholar)
-        </a> 
-        pages.
-      </p>
+      <article class="card">
+        <div class="kicker">Graduate Student</div>
+        <h3>PK</h3>
+        <div class="meta">Graduate Student in Exercise & Health Sciences, University of Massachusetts Boston</div>
+        <p>
+          PK assists with literature reviews, data processing, and supports intervention
+          studies promoting physical activity and nutrition behaviors in community settings.
+        </p>
+      </article>
+    </div>
+
+    <h2 class="section-title">Community Partners</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="kicker">Community Partners</div>
+        <h3>Schools, Head Start Programs, and Community Centers</h3>
+        <p>
+          ALL collaborates closely with community organizations to design, implement, and
+          evaluate interventions that promote active and healthy living across Massachusetts
+          and beyond.
+        </p>
+      </article>
     </div>
   </div>
 </main>
@@ -141,7 +234,7 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('menu-toggle').addEventListener('click', function() {
+  document.getElementById('menu-toggle').addEventListener('click', function () {
     const nav = document.getElementById('site-nav');
     nav.classList.toggle('open');
     this.setAttribute('aria-expanded', nav.classList.contains('open'));
