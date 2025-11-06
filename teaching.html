@@ -35,10 +35,9 @@
       box-shadow:inset 0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.15);
     }
 
-    /* Colorful lab name */
     .brand-colored span:nth-child(1){color:#e53935;}   /* red - Active */
     .brand-colored span:nth-child(2){color:#2e7d32;}   /* green - Living */
-    .brand-colored span:nth-child(3){color:#2196f3;}   /* light blue - Lab */
+    .brand-colored span:nth-child(3){color:#2196f3;}   /* blue - Lab */
 
     .nav-links{display:flex;gap:14px}
     .nav-links a{
@@ -74,20 +73,19 @@
     /* Footer */
     footer{
       border-top:1px solid var(--border);
-      background:#f9fafb;color:#374151;
+      background:#fff;             /* plain white background */
+      color:#4b5563;               /* neutral gray text */
       padding:36px 0;font-size:1rem;
       margin-top:60px;text-align:center;line-height:1.6;
     }
-    .footer-lab span:nth-child(1){color:#e53935;}
-    .footer-lab span:nth-child(2){color:#2e7d32;}
-    .footer-lab span:nth-child(3){color:#2196f3;}
+    .footer-lab strong{font-weight:600;color:#111827;} /* dark neutral title */
   </style>
 </head>
 
 <body>
   <header class="header">
     <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) About">
+      <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) Home">
         <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
         <span class="brand-colored">
           <span>Active</span> <span>Living</span> <span>Lab</span> (ALL)
@@ -136,14 +134,14 @@
 
   <footer class="footer">
     <div class="container footer-lab">
-      <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
+      <strong>Active Living Lab (ALL)</strong><br>
       © <span id="year"></span> Active Living Lab (ALL)
     </div>
   </footer>
 
   <script>
+    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
