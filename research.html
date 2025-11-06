@@ -37,7 +37,7 @@
     }
     .brand-colored span:nth-child(1){color:#e53935;}   /* red - Active */
     .brand-colored span:nth-child(2){color:#2e7d32;}   /* green - Living */
-    .brand-colored span:nth-child(3){color:#2196f3;}   /* light blue - Lab */
+    .brand-colored span:nth-child(3){color:#2196f3;}   /* blue - Lab */
 
     .nav-links{display:flex;gap:14px}
     .nav-links a{
@@ -50,7 +50,7 @@
     }
     .menu-toggle{
       display:none;padding:8px 12px;border:1px solid var(--border);
-      border-radius:10px;background:#fff;font-weight:600
+      border-radius:10px;background:#fff;font-weight:600;cursor:pointer;
     }
     @media(max-width:960px){
       .menu-toggle{display:inline-block}
@@ -91,7 +91,8 @@
     /* Footer */
     footer{
       border-top:1px solid var(--border);
-      background:#f9fafb;color:#374151;
+      background:#fff;          /* changed from #f9fafb to pure white */
+      color:#374151;
       padding:28px 0;font-size:.95rem;
       margin-top:40px;text-align:left;
     }
@@ -114,7 +115,7 @@
     <nav class="nav-links" id="site-nav">
       <a href="about.html">About</a>
       <a href="people.html">People</a>
-      <a href="research.html" class="active">Research</a>   
+      <a href="research.html" class="active">Research</a>
       <a href="publications.html">Publications</a>
       <a href="teaching.html">Teaching</a>
       <a href="outreach.html">Outreach</a>
@@ -136,62 +137,32 @@
       <p>Grounded in behavior change theory and guided by community engagement, we collaborate with schools, families, and local organizations to co-create solutions that bridge research and practice. Through this work, we aim not only to understand the determinants of active living but also to transform them—helping communities move toward healthier, more equitable futures. To learn more about our research, visit our <a href="#projects">Projects</a> and <a href="publications.html">Publications</a> pages.</p>
     </div>
 
-    <div class="grid" id="projects">
-      <!-- Project Cards -->
-      <article class="card" data-area="pa sb">
-        <div class="kicker">Ongoing</div>
-        <h3>ALL-PLAY: Parent–Child Exergaming and Physical Activity</h3>
-        <p class="meta">Design: Lab-based experiment • Setting: Movement lab • Population: Preschoolers (3–5 years) and parents</p>
-        <p>We test whether preschoolers are more physically active when they play active video games alone versus when they play together with a parent. Activity levels are measured under both conditions to understand how parent involvement influences movement.</p>
-      </article>
-
-      <article class="card" data-area="pa sb sleep nutrition methods">
-        <div class="kicker">Ongoing</div>
-        <h3>SUNRISE: 24-Hour Movement Behaviors in Early Childhood</h3>
-        <p class="meta">Design: Surveillance / Observational • Setting: Preschool &amp; community sites • Population: 3–5 years</p>
-        <p>U.S. arm of a global study benchmarking how young children move, sleep, and sit. Measures physical activity, sedentary time, and sleep against international 24-hour movement guidelines, along with diet and health indicators.</p>
-      </article>
-
-      <article class="card" data-area="sb nutrition">
-        <div class="kicker">Development</div>
-        <h3>SCREEN-SMART: Family Coaching to Reduce Sedentary Time</h3>
-        <p class="meta">Design: Pragmatic RCT • Setting: Home &amp; Head Start • Population: Families with preschoolers</p>
-        <p>Family-centered coaching and media plans to shift screen habits, increase light activity, and support healthier snacking routines.</p>
-      </article>
-
-      <article class="card" data-area="sleep pa">
-        <div class="kicker">Development</div>
-        <h3>SLEEP-WELL: Teacher-Delivered Routines for Better Sleep</h3>
-        <p class="meta">Design: Hybrid I • Setting: Preschool classrooms • Population: 3–5 years</p>
-        <p>Brief, teacher-delivered lessons and parent nudges to align daytime activity with consistent evening routines and earlier bedtimes.</p>
-      </article>
-
-      <article class="card" data-area="nutrition pa">
-        <div class="kicker">Planning</div>
-        <h3>HEART: Healthy Eating &amp; Active Recreation for Tribes</h3>
-        <p class="meta">Design: Community-based participatory research • Setting: Tribal communities</p>
-        <p>Co-creating culturally grounded PA and nutrition strategies with community leaders to support sustainable behavior change.</p>
-      </article>
-
-      <article class="card" data-area="methods">
-        <div class="kicker">Methods</div>
-        <h3>Better Trials: Practical Randomization &amp; Reporting for School Settings</h3>
-        <p class="meta">Design: Methods &amp; guidance • Setting: Schools &amp; childcare</p>
-        <p>Templates and reporting guides (CONSORT-aligned) to make rigorous trials feasible in real-world education environments.</p>
-      </article>
-    </div>
+<footer class="footer">
+  <div class="container footer-lab">
+    <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
+    © <span id="year"></span> Active Living Lab (ALL)
   </div>
-</main>
+</footer>
 
- <footer class="footer">
-    <div class="container footer-lab">
-      <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
-      © <span id="year"></span> Active Living Lab (ALL)
-    </div>
-  </footer>
+<script>
+  // Dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
 </body>
 </html>
