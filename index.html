@@ -12,7 +12,7 @@
       --brand:#1363DF;--surface:#f8fafc;--border:#e5e7eb;--shadow:0 8px 24px rgba(0,0,0,.06);
       --active:#e53935;   /* red */
       --living:#2e7d32;   /* green */
-      --lab:#1e3a8a;      /* blue */
+      --lab:#3b82f6;      /* lighter blue */
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
@@ -128,41 +128,4 @@
 <footer>
   <div class="container footer-grid">
     <div>
-      <strong><span class="active">Active</span> <span class="living">Living</span> <span class="lab">Lab</span> (ALL)</strong><br>
-      © <span id="year"></span> Active Living Lab (ALL)
-    </div>
-    <div>
-      <small>
-        This is a personal research lab website maintained by the Active Living Lab (ALL).<br>
-        It does not represent the official views of the University of Massachusetts Boston.
-      </small>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Set year dynamically
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Mobile menu toggle
-  const toggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('site-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
-    });
-  }
-
-  // Close menu after clicking
-  if (nav) {
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-</script>
-</body>
-</html>
+      <str
