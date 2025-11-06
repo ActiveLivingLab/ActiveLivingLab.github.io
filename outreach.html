@@ -42,6 +42,11 @@
       box-shadow:inset 0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.15)
     }
 
+    /* Colorful lab name */
+    .brand-colored span:nth-child(1){color:#e53935;}   /* red - Active */
+    .brand-colored span:nth-child(2){color:#2e7d32;}   /* green - Living */
+    .brand-colored span:nth-child(3){color:#2196f3;}   /* blue - Lab */
+
     .nav-links{display:flex;gap:14px}
     .nav-links a{
       padding:8px 10px;
@@ -107,30 +112,29 @@
 
     footer{
       border-top:1px solid var(--border);
-      background:#f9fafb;
-      color:#374151;
+      background:#fff;
+      color:#4b5563;
       padding:28px 0;
       font-size:.95rem;
-      margin-top:40px
+      margin-top:40px;
+      text-align:left;
     }
-    .footer-lab{
-      display:flex;
-      flex-direction:column;
-      gap:4px
-    }
+    .footer-lab strong{font-weight:600;color:#111827;}
   </style>
 </head>
 <body>
 
 <header class="header">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) About">
+    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
       <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
-      <span>Active Living Lab (ALL)</span>
+      <span class="brand-colored">
+        <span>Active</span> <span>Living</span> <span>Lab</span> (ALL)
+      </span>
     </a>
     <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">Menu</button>
     <nav class="nav-links">
-      <a href="index.html">About</a>
+      <a href="about.html">About</a>
       <a href="people.html">People</a>
       <a href="research.html">Research</a>
       <a href="publications.html">Publications</a>
@@ -165,8 +169,8 @@
 
 <footer class="footer">
   <div class="container footer-lab">
-    <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong>
-    <span>© <span id="year"></span> Active Living Lab (ALL)</span>
+    <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
+    © <span id="year"></span> Active Living Lab (ALL)
   </div>
 </footer>
 
