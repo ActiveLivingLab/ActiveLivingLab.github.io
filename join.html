@@ -49,3 +49,100 @@
     }
 
     /* Main */
+    main{padding:60px 0}
+    h1{
+      font-size:clamp(1.8rem,2.2vw+1rem,2.6rem);
+      margin-bottom:10px;
+    }
+    h2{margin-top:32px;margin-bottom:10px;font-size:1.3rem}
+    h3{margin-top:22px;margin-bottom:8px;font-size:1.1rem}
+    .lead{color:var(--muted);max-width:70ch;margin-bottom:18px}
+    p{max-width:80ch;margin-bottom:1rem}
+    ul,ol{margin:0 0 1rem 1.5rem}
+    li{margin-bottom:0.4rem}
+
+    /* Footer */
+    footer{
+      background:#000;
+      color:#fff;
+      padding:36px 0;
+      font-size:1rem;
+      margin-top:60px;
+      text-align:center;
+      line-height:1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) home">
+      <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
+      <span class="brand-colored">
+        <span>Active</span> <span>Living</span> <span>Lab</span> (ALL)
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html">About</a>
+      <a href="people.html">People</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="news.html">News</a>
+      <a href="join.html" class="active">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Join the Lab</h1>
+    <p class="lead">
+      We welcome students and collaborators who are committed to promoting health equity through physical activity, nutrition, sleep, and community-engaged research.
+    </p>
+
+    <h2>Information for prospective lab members</h2>
+    <p>
+      If you are interested in joining the Active Living Lab (ALL), this page will help you understand what we look for in prospective lab members. Please read it carefully before contacting Dr. Zeng about potential research opportunities.
+    </p>
+
+    <h3>What we are looking for</h3>
+    <p>
+      In addition to strong motivation and curiosity about promoting health and equity, our research involves diverse skills across behavioral science, data analysis, and community engagement. The specific needs vary by project, but successful lab members typically demonstrate several of the following qualities, along with a willingness to learn new ones:
+    </p>
+
+    <ul>
+      <li><strong>Data and scientific reasoning:</strong> Ability to think critically about how health-related data can answer research questions related to physical activity, nutrition, sleep, and well-being. Experience with R, RStudio, or other analysis tools, and familiarity with statistics or data visualization, is helpful.</li>
+      <li><strong>Research design and community-based implementation:</strong> Interest or experience in school- or community-based projects (e.g., schools, Head Start programs, community centers), including recruitment, data collection, surveys, behavioral observations, or intervention delivery.</li>
+      <li><strong>Reproducible and ethical workflows:</strong> Commitment to carefully documenting work, managing data responsibly, and contributing to shared research materials (e.g., codebooks, data dictionaries, reports).</li>
+      <li><strong>Communication, organization, and collaboration:</strong> Strong writing, presentation, and interpersonal skills; proactive communication; and a generous, team-oriented approach to working with others.</li>
+    </ul>
+
+    <h3>Values we share</h3>
+    <p>
+      Even if you do not currently have all of the skills above, you are still encouraged to reach out. What matters most is a genuine commitment to learning, an interest in health promotion research, and a willingness to grow. You can strengthen your preparation through coursework, research assistantships, or independent learning before joining the lab.
+    </p>
+    <p>
+      The Active Living Lab (ALL) is firmly committed to equity, diversity, and inclusion in research, teaching, and community engagement. We strive to create a welcoming, supportive, and intellectually vibrant environment that values the full diversity of human experiences — including race, ethnicity, gender identity, age, socioeconomic background, national origin, sexual orientation, ability, and religion.
+    </p>
+    <p>
+      Above all, we expect all members — including Dr. Zeng — to actively foster a respectful, collaborative, and safe lab culture built on trust, openness, and shared purpose.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <strong>Active Living Lab (ALL)</strong><br>
+    © <span id="year"></span> Active Living Lab (ALL)
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
