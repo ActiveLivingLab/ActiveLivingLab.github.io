@@ -145,31 +145,15 @@
 </main>
 
 <footer class="footer">
-  <div class="container footer-lab">
-    <strong>Active Living Lab (ALL)</strong><br>
-    © <span id="year"></span> Active Living Lab (ALL)
-  </div>
-</footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+      <div>© <span id="year">2025</span> Active Living Lab (ALL)</div>
+    </div>
+  </footer>
 
-<script>
-  // Dynamic year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Mobile menu toggle
-  const toggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('site-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
-    });
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
