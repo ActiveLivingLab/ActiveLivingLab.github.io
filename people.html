@@ -117,13 +117,15 @@
   </div>
 </main>
 
-<footer>
-  <div class="container">
-    <strong>Active Living Lab (ALL)</strong><br>
-    © <span id="year"></span> Active Living Lab (ALL)
-  </div>
-</footer>
+ <footer class="footer">
+    <div class="container footer-lab">
+      <strong><span>Active</span> <span>Living</span> <span>Lab</span> (ALL)</strong><br>
+      © <span id="year"></span> Active Living Lab (ALL)
+    </div>
+  </footer>
 
-<script>
-  // Footer year
-  document.getElementById('year').textContent = new Date().g
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
