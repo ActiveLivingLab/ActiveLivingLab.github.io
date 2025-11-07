@@ -3,137 +3,139 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Outreach • Active Living Lab (ALL) • UMass Boston</title>
-  <meta name="description" content="Outreach and community partnerships of the Active Living Lab (ALL) at UMass Boston.">
+  <title>Outreach • Active Living Lab (ALL)</title>
+  <meta name="description" content="Outreach and community partnerships of the Active Living Lab (ALL).">
   <style>
     :root{
-      --bg:#fff;
-      --text:#111827;
-      --muted:#6b7280;
-      --brand:#1363DF;
-      --brand-2:#0ea5e9;
-      --link:#0f766e;
-      --link-hover:#115e59;
-      --surface:#f8fafc;
-      --border:#e5e7eb;
-      --radius:14px;
-      --shadow:0 8px 24px rgba(0,0,0,.06);
+      --bg:#fff;--text:#111827;--muted:#6b7280;
+      --brand:#1363DF;--brand-2:#0ea5e9;
+      --link:#0f766e;--link-hover:#115e59;
+      --surface:#f8fafc;--border:#e5e7eb;
+      --radius:14px;--shadow:0 8px 24px rgba(0,0,0,.06);
+      --active:#e53935;--living:#2e7d32;--lab:#1e3a8a;
     }
     *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
       background:var(--bg);
       line-height:1.7;
+      display:flex;
+      flex-direction:column;
     }
+    main{flex:1;display:flex;flex-direction:column}
     a{color:var(--link);text-decoration:none}
     a:hover{color:var(--link-hover);text-decoration:underline}
+
+    /* Layout */
     .container{
-      max-width:960px;
+      width:100%;
+      max-width:1250px;
       margin:0 auto;
-      padding:0 1.5rem;
+      padding-inline:clamp(16px,4vw,40px);
     }
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:10;
-      background:rgba(255,255,255,.9);
+
+    /* Header / Nav */
+    header{
+      position:sticky;top:0;background:#ffffffcc;
       backdrop-filter:blur(8px);
       border-bottom:1px solid var(--border);
-    }
-    .nav-container{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0.75rem 0;
-      gap:0.75rem;
-    }
-    .logo{
-      font-weight:600;
-      font-size:1rem;
-      color:var(--text);
-    }
-    .logo span{
-      font-weight:400;
-      font-size:0.875rem;
-      color:var(--muted);
-      margin-left:0.25rem;
+      z-index:50;
     }
     .nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.75rem;
-      font-size:0.9rem;
-      justify-content:flex-end;
+      display:flex;justify-content:space-between;align-items:center;min-height:64px;
     }
-    .nav a{
-      padding:0.25rem 0.6rem;
-      border-radius:999px;
-      transition:background .15s ease, color .15s ease;
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);
     }
-    .nav a:hover{
-      background:var(--surface);
-      text-decoration:none;
-    }
-    .nav a.nav-cta{
-      border:1px solid var(--brand);
-      color:var(--brand);
-    }
-    .nav a.nav-cta:hover{
+    .brand-logo{width:58px;height:auto;display:block}
+    .brand-colored span:nth-child(1){color:var(--active);}
+    .brand-colored span:nth-child(2){color:var(--living);}
+    .brand-colored span:nth-child(3){color:var(--lab);}
+    .nav-links{display:flex;gap:14px}
+    .nav-links a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--text)}
+    .nav-links a.active{
       background:var(--brand);
       color:#fff;
+      box-shadow:0 2px 8px rgba(19,99,223,.25);
     }
-    main{padding:2rem 0 3rem;}
-    h1{font-size:2rem;margin-bottom:0.75rem;}
-    h2{font-size:1.3rem;margin:1.75rem 0 0.75rem;}
-    p{margin:0.45rem 0;}
-    ul{margin:0.5rem 0 0.75rem 1.25rem;}
-    li+li{margin-top:0.25rem;}
-    .footer{
+    .menu-toggle{
+      display:none;padding:8px 12px;border:1px solid var(--border);
+      border-radius:10px;background:#fff;font-weight:600;cursor:pointer;
+    }
+    @media(max-width:960px){
+      .menu-toggle{display:inline-block}
+      .nav-links{
+        position:absolute;top:64px;left:0;right:0;background:#fff;
+        flex-direction:column;display:none;padding:10px;
+        border-bottom:1px solid var(--border)
+      }
+      .nav-links.open{display:flex}
+    }
+
+    /* Main */
+    main{padding:80px 0}
+    h1{
+      font-size:clamp(2.2rem,2.6vw+1rem,3rem);
+      margin-bottom:24px;
+    }
+    h2{
+      font-size:1.5rem;
+      margin:40px 0 12px;
+    }
+    .lead{
+      color:#374151;
+      font-size:1.25rem;
+      max-width:80ch;
+      line-height:1.8;
+      margin-bottom:32px;
+    }
+    p{
+      margin:0.4rem 0;
+      font-size:1.1rem;
+      color:#4b5563;
+      max-width:80ch;
+    }
+    ul{
+      margin:0.5rem 0 0.75rem 1.5rem;
+    }
+    li{
+      margin-bottom:0.35rem;
+      font-size:1.1rem;
+      color:#4b5563;
+    }
+
+    /* Footer */
+    footer{
       border-top:1px solid var(--border);
-      margin-top:2.5rem;
-      padding:1.5rem 0 2rem;
-      font-size:0.85rem;
-      color:var(--muted);
+      background:#f9fafb;
+      color:#374151;
+      padding:28px 0;
     }
-    .footer-top{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      gap:1rem;
-      margin-bottom:0.5rem;
-    }
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.75rem;
-    }
-    @media (max-width:640px){
-      .nav-container{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .nav{
-        justify-content:flex-start;
-      }
-      h1{font-size:1.6rem;}
-    }
+    .footer-grid{display:grid;gap:20px}
+    @media(min-width:720px){.footer-grid{grid-template-columns:2fr 2fr}}
+    .footer small{display:block;line-height:1.5}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        Active Living Lab <span>(ALL)</span>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Active Living Lab (ALL) Home">
+        <img src="all-logo.png" alt="Active Living Lab logo" class="brand-logo">
+        <span class="brand-colored">
+          <span>Active</span> <span>Living</span> <span>Lab</span> (ALL)
+        </span>
       </a>
-      <nav class="nav">
-        <a href="index.html">About</a>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      <nav class="nav-links" id="site-nav">
+        <a href="about.html">About</a>
         <a href="people.html">People</a>
         <a href="research.html">Research</a>
         <a href="teaching.html">Teaching</a>
-        <a href="outreach.html">Outreach</a>
+        <a href="outreach.html" class="active">Outreach</a>
         <a href="news.html">News</a>
-        <a href="join.html" class="nav-cta">Join</a>
+        <a href="join.html">Join</a>
       </nav>
     </div>
   </header>
@@ -141,36 +143,60 @@
   <main>
     <div class="container">
       <h1>Outreach &amp; Partnerships</h1>
-      <p>
-        We co-create community-based projects with schools, Head Start centers, YMCAs,
-        and local organizations to promote healthy, active living for children and families.
+      <p class="lead">
+        The Active Living Lab (ALL) builds sustainable partnerships with schools, Head Start programs,
+        and community organizations to co-create projects that promote active and healthy living
+        among children, families, and educators.
       </p>
 
       <h2>Current and Emerging Partnerships</h2>
       <ul>
-        <li>Massachusetts schools and community centers</li>
-        <li>SNAP-Ed collaborations to support nutrition and physical activity education</li>
+        <li>Collaborations with Massachusetts schools and community centers</li>
+        <li>SNAP-Ed initiatives supporting nutrition and physical activity education</li>
         <li>Workshops and trainings for parents, teachers, and community staff</li>
       </ul>
 
       <h2>Interested in Partnering?</h2>
       <p>
-        We welcome inquiries from schools and organizations serving children and families
-        who are interested in promoting physical activity, nutrition, and other health behaviors.
+        We welcome collaboration with schools and organizations serving children and families who share our mission
+        to promote physical activity, nutrition, sleep, and other health behaviors. 
+      </p>
+      <p>
+        To connect or explore partnership opportunities, please visit our <a href="join.html">Join</a> page.
       </p>
     </div>
   </main>
 
-<footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-      <div>© <span id="year">2025</span> Active Living Lab (ALL)</div>
+  <footer>
+    <div class="container footer-grid">
+      <div>© <span id="year"></span> Active Living Lab (ALL)</div>
+      <div>
+        <small>
+          This is a personal research lab website maintained by the Active Living Lab (ALL).<br>
+          It does not represent the official views of the University of Massachusetts Boston.
+        </small>
+      </div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+      });
+    }
+    if (nav && toggle) {
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>
